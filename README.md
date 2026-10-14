@@ -35,38 +35,38 @@ the hierarchy of the code :
 
 Hierarchy of the Publishers, Subscribers and the event names:
 
-Game
-├── Core
-│   ├── GameState          (data)
-│   ├── GameEvents         [HUB] holds all 9 events
-│   └── GameConfig         (data)
-├── Input
-│   ├── ShootingInput      [PUB] OnShotFired, OnShotMissed
-│   │                      [SUB] OnGameStateChanged
-│   └── GunShake           [SUB] OnShotFired
-├── Plates
-│   ├── PlateData          (data)
-│   ├── Plate              [PUB] OnPlateHit
-│   │                      [SUB] OnGameStateChanged
-│   ├── PlateRow           (no events)
-│   └── PlateSpawner       [SUB] OnGameStateChanged
-├── Scoring
-│   ├── ComboSystem        [PUB] OnComboChanged, OnPointsAwarded
-│   │                      [SUB] OnPlateHit, OnShotMissed, OnGameStateChanged
-│   └── ScoreSystem        [PUB] OnScoreChanged
-│                          [SUB] OnPointsAwarded, OnGameStateChanged
-├── Flow
-│   ├── GameTimer          [PUB] OnTimeChanged, OnTimeUp
-│   │                      [SUB] OnGameStateChanged
-│   └── GameStateManager   [PUB] OnGameStateChanged
-│                          [SUB] OnScoreChanged, OnTimeUp
-├── UI
-│   ├── ScoreUI            [SUB] OnScoreChanged
-│   ├── ComboUI            [SUB] OnComboChanged
-│   ├── TimerUI            [SUB] OnTimeChanged
-│   ├── FloatingPointsUI   [SUB] OnPointsAwarded
-│   │   └── FloatingText   (no events)
-│   └── ScreenUI           [SUB] OnGameStateChanged
-└── Audio
-    └── AudioManager       [SUB] OnShotFired, OnPlateHit,
-                           OnComboChanged, OnGameStateChanged
+    Game
+    ├── Core
+    │   ├── GameState          (data)
+    │   ├── GameEvents         [HUB] holds all 9 events
+    │   └── GameConfig         (data)
+    ├── Input
+    │   ├── ShootingInput      [PUB] OnShotFired, OnShotMissed
+    │   │                      [SUB] OnGameStateChanged
+    │   └── GunShake           [SUB] OnShotFired
+    ├── Plates
+    │   ├── PlateData          (data)
+    │   ├── Plate              [PUB] OnPlateHit
+    │   │                      [SUB] OnGameStateChanged
+    │   ├── PlateRow           (no events)
+    │   └── PlateSpawner       [SUB] OnGameStateChanged
+    ├── Scoring
+    │   ├── ComboSystem        [PUB] OnComboChanged, OnPointsAwarded
+    │   │                      [SUB] OnPlateHit, OnShotMissed, OnGameStateChanged
+    │   └── ScoreSystem        [PUB] OnScoreChanged
+    │                          [SUB] OnPointsAwarded, OnGameStateChanged
+    ├── Flow
+    │   ├── GameTimer          [PUB] OnTimeChanged, OnTimeUp
+    │   │                      [SUB] OnGameStateChanged
+    │   └── GameStateManager   [PUB] OnGameStateChanged
+    │                          [SUB] OnScoreChanged, OnTimeUp
+    ├── UI
+    │   ├── ScoreUI            [SUB] OnScoreChanged
+    │   ├── ComboUI            [SUB] OnComboChanged
+    │   ├── TimerUI            [SUB] OnTimeChanged
+    │   ├── FloatingPointsUI   [SUB] OnPointsAwarded
+    │   │   └── FloatingText   (no events)
+    │   └── ScreenUI           [SUB] OnGameStateChanged
+    └── Audio
+        └── AudioManager       [SUB] OnShotFired, OnPlateHit,
+                            OnComboChanged, OnGameStateChanged
