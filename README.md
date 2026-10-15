@@ -1,5 +1,5 @@
 # Shoot-Out-the-Star
-Shoot the plates to score up and win a plushie :D (scene lost faaah-- don't run it)
+Shoot the plates to score up and win a plushie :D (scene lost faaah--)
 
 the hierarchy of the code :
 
