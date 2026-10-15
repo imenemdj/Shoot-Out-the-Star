@@ -1,8 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(BoxCollider2D))]
 public class Plate : MonoBehaviour
 {
+    [SerializeField] TextMeshPro label;
+
     PlateData data;
     Vector2 direction;
     float speed;
@@ -24,6 +27,10 @@ public class Plate : MonoBehaviour
         BoxCollider2D box = GetComponent<BoxCollider2D>();
         box.size = data.sprite.bounds.size;
         box.offset = data.sprite.bounds.center;
+
+        label.text = data.points > 0 ? $"+{data.points}" : data.points.ToString();
+        label.color = data.points < 0 ? Color.red : Color.white;
+        label.sortingOrder = 3;
     }
 
     void Update()
@@ -37,7 +44,8 @@ public class Plate : MonoBehaviour
     }
 
     public void Hit()
-    {
+    {   
+        Debug.Log("Plate hit: " + data.points);
         GameEvents.RaisePlateHit(data.points, transform.position);
         Destroy(gameObject);
     }

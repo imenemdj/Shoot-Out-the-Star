@@ -15,7 +15,12 @@ public class FloatingText : MonoBehaviour
     public void Show(int points)
     {
         label.text = points > 0 ? $"+{points}" : points.ToString();
-        label.color = points >= 0 ? positiveColor : negativeColor;
+
+        Color c = points >= 0 ? positiveColor : negativeColor;
+        c.a = 1f;
+        label.enableVertexGradient = false;
+        label.color = c;
+
         StartCoroutine(Animate());
     }
 

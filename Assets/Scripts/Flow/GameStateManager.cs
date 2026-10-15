@@ -5,6 +5,8 @@ public class GameStateManager : MonoBehaviour
 {
     [SerializeField] GameConfig config;
 
+    static bool skipStartScreen;
+
     GameState current;
 
     void OnEnable()
@@ -19,11 +21,26 @@ public class GameStateManager : MonoBehaviour
         GameEvents.OnTimeUp -= OnTimeUp;
     }
 
-    void Start() => SetState(GameState.Ready);
+    void Start()
+    {
+        if (skipStartScreen)
+        {
+            skipStartScreen = false;
+            SetState(GameState.Playing);
+        }
+        else
+        {
+            SetState(GameState.Ready);
+        }
+    }
 
     public void StartGame() => SetState(GameState.Playing);
 
-    public void Restart() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void Restart()
+    {
+        skipStartScreen = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     void OnScoreChanged(int score)
     {
